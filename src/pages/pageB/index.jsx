@@ -1,11 +1,10 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { View, Button, Text } from "@tarojs/components";
-import Taro from "@tarojs/taro";
+
 import { add, minus, asyncAdd } from "../../actions/counter";
 import A from "../../common/componentA";
 import B from "../../common/componentB";
-
 import "./index.scss";
 
 @connect(
@@ -34,17 +33,17 @@ class Index extends Component {
   componentDidShow() {}
 
   componentDidHide() {}
-  dec = () => {
+  add = () => {
     debugger;
-    this.props.dec();
+    this.props.add();
   };
   render() {
     return (
       <View className="index">
-        <Button className="add_btn" onClick={this.props.add}>
+        <Button className="add_btn" onClick={this.add}>
           +
         </Button>
-        <Button className="dec_btn" onClick={this.dec}>
+        <Button className="dec_btn" onClick={this.props.dec}>
           -
         </Button>
         <Button className="dec_btn" onClick={this.props.asyncAdd}>
@@ -54,16 +53,8 @@ class Index extends Component {
           <Text>{this.props.counter.num}</Text>
         </View>
         <View>
-          <Text>Hello, World</Text>
+          <Text>Hello, World Page B </Text>
         </View>
-        <Button
-          className="dec_btn"
-          onClick={() => {
-            Taro.navigateTo({ url: "../pageB/index" });
-          }}
-        >
-          gotoB
-        </Button>
         <A />
         <B />
       </View>
